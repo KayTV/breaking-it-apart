@@ -58,9 +58,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-  callbackURL:
-  // "http://localhost:3000/auth/twitter/callback",
-    "https://ancient-wave-14103.herokuapp.com/auth/twitter/callback",
+  callbackURL: process.env.CALLBACK_URL,
   state: true
 }, function(accessToken, refreshToken, profile, done) {
   knex('users')
